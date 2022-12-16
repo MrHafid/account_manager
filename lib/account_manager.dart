@@ -1,7 +1,5 @@
 import 'package:flutter/services.dart';
 
-import 'account_manager_platform_interface.dart';
-
 class Account {
   String name;
   String accountType;
@@ -54,7 +52,7 @@ class AccountManager {
     List<Account> accounts = [];
     final result = await _channel.invokeMethod('getAccounts');
     for (var item in result) {
-      accounts.add(new Account(
+      accounts.add(Account(
           name: item[_KeyAccountName], accountType: item[_KeyAccountType]));
     }
     return accounts;
